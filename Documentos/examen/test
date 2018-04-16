@@ -1,0 +1,17 @@
+import redis
+r=redis.Redis (host='localhost', port=6379,db=0)
+def sql_to_redis(request):
+    #object.all()
+    result_set={'users':{"port":"add"}}
+
+    my_redis=r.get('foo')
+    my_redis_2=r.set('name','goku')
+    result=r.get('name')
+    result=r.set('result_set',result_set)
+    get_result=r.get('result_get')
+    context={
+        'msg':'hello django',
+        'redis':result
+    }
+    return render(request,'index.html',context)
+    
